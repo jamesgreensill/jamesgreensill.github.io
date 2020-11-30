@@ -1,6 +1,6 @@
 .main_button{
     padding: 15px 32px;
-    color: orange;
+    color: rgb(255, 57, 57);
     background-color: rgba(31, 31, 31, 1);
     border: none;
     text-align: center;
@@ -12,17 +12,17 @@
 .main_button:hover{
    
     color: rgba(31, 31, 31, 1);
-    background-color: orange;
+    background-color: rgb(255, 57, 57);
     border-radius: 32px;
     transition: 0.4s;
 }
 .main_button:active{
-    background-color: orange;
+    background-color: rgb(255, 57, 57);
     color: white;
     border-radius: 32px;
 }
 .nav_button{
     display: inline;
-    background-color: orange;
+    background-color: rgb(255, 57, 57);
     padding: 15px 32px;
 }
