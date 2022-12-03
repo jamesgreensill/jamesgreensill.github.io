@@ -8,15 +8,6 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 14 Jun 2022 17:58:49 +1000</lastBuildDate><atom:link href="jamesgreensill.com/projects/games/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Super Darts</title>
-      <link>jamesgreensill.com/projects/games/proj_super-darts/</link>
-      <pubDate>Wed, 10 Aug 2022 15:36:45 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/games/proj_super-darts/</guid>
-      <description> Programmers James Greensill Lewis Comstive Charlie O&amp;rsquo;Regan Designers Leo Lopez Brodie Maddren Caitlin Johansson Beau Bardwell Paige Dowsett Artists Ethan Kyte Holly Thompson Jesse Lazzaro Lachlan Goolagong Lawson Upton </description>
-    </item>
-    
-    <item>
       <title>The Devil&#39;s Cookbook</title>
       <link>jamesgreensill.com/projects/games/proj_the_devils_cookbook/</link>
       <pubDate>Wed, 10 Aug 2022 15:36:45 +1000</pubDate>
@@ -38,24 +29,6 @@ Status: Completed.
 Description Mad Santa is a game where you play as an Elf, picking up after the Mad Santa.
 This game was made for a 48 hour Game Jam in collaberation with AIE.
 My Contribution I was the &amp;ldquo;Lead&amp;rdquo;/Only Programmer for Mad Santa, and as such everything you see mechanically was done by myself.</description>
-    </item>
-    
-    <item>
-      <title>Carvroom</title>
-      <link>jamesgreensill.com/projects/games/proj_carvroom/</link>
-      <pubDate>Wed, 10 Aug 2022 15:36:31 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/games/proj_carvroom/</guid>
-      <description> Programmers James Greensill Lewis Comstive </description>
-    </item>
-    
-    <item>
-      <title>How&#39;s It Growing</title>
-      <link>jamesgreensill.com/projects/games/proj_hows-it-growing/</link>
-      <pubDate>Wed, 10 Aug 2022 15:36:23 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/games/proj_hows-it-growing/</guid>
-      <description> Programmers James Greensill Calvin Soueid Ronan Richardson Alex Manning Designers Victoria Richardson Caitlin Johansson Charlie Brazil Artists Aislinn (Ayvee) Smith Ethan Kyte Lara Diego Petra Crispin </description>
     </item>
     
   </channel>

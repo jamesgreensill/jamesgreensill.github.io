@@ -8,15 +8,6 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Aug 2022 15:36:45 +1000</lastBuildDate><atom:link href="jamesgreensill.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Super Darts</title>
-      <link>jamesgreensill.com/projects/games/proj_super-darts/</link>
-      <pubDate>Wed, 10 Aug 2022 15:36:45 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/games/proj_super-darts/</guid>
-      <description> Programmers James Greensill Lewis Comstive Charlie O&amp;rsquo;Regan Designers Leo Lopez Brodie Maddren Caitlin Johansson Beau Bardwell Paige Dowsett Artists Ethan Kyte Holly Thompson Jesse Lazzaro Lachlan Goolagong Lawson Upton </description>
-    </item>
-    
-    <item>
       <title>The Devil&#39;s Cookbook</title>
       <link>jamesgreensill.com/projects/games/proj_the_devils_cookbook/</link>
       <pubDate>Wed, 10 Aug 2022 15:36:45 +1000</pubDate>
@@ -38,121 +29,6 @@ Status: Completed.
 Description Mad Santa is a game where you play as an Elf, picking up after the Mad Santa.
 This game was made for a 48 hour Game Jam in collaberation with AIE.
 My Contribution I was the &amp;ldquo;Lead&amp;rdquo;/Only Programmer for Mad Santa, and as such everything you see mechanically was done by myself.</description>
-    </item>
-    
-    <item>
-      <title>Carvroom</title>
-      <link>jamesgreensill.com/projects/games/proj_carvroom/</link>
-      <pubDate>Wed, 10 Aug 2022 15:36:31 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/games/proj_carvroom/</guid>
-      <description> Programmers James Greensill Lewis Comstive </description>
-    </item>
-    
-    <item>
-      <title>easy_time</title>
-      <link>jamesgreensill.com/projects/libraries/proj_easy_time/</link>
-      <pubDate>Wed, 10 Aug 2022 15:36:31 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/libraries/proj_easy_time/</guid>
-      <description> Authors James Greensill </description>
-    </item>
-    
-    <item>
-      <title>easy_types</title>
-      <link>jamesgreensill.com/projects/libraries/proj_easy_types/</link>
-      <pubDate>Wed, 10 Aug 2022 15:36:31 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/libraries/proj_easy_types/</guid>
-      <description> Authors James Greensill </description>
-    </item>
-    
-    <item>
-      <title>How&#39;s It Growing</title>
-      <link>jamesgreensill.com/projects/games/proj_hows-it-growing/</link>
-      <pubDate>Wed, 10 Aug 2022 15:36:23 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/games/proj_hows-it-growing/</guid>
-      <description> Programmers James Greensill Calvin Soueid Ronan Richardson Alex Manning Designers Victoria Richardson Caitlin Johansson Charlie Brazil Artists Aislinn (Ayvee) Smith Ethan Kyte Lara Diego Petra Crispin </description>
-    </item>
-    
-    <item>
-      <title>Eclipse Engine</title>
-      <link>jamesgreensill.com/projects/applications/proj_eclipse-engine/</link>
-      <pubDate>Mon, 01 Aug 2022 15:26:58 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/projects/applications/proj_eclipse-engine/</guid>
-      <description> Authors James Greensill </description>
-    </item>
-    
-    <item>
-      <title>Eclipse Engine - Networking</title>
-      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_5/</link>
-      <pubDate>Tue, 14 Jun 2022 17:58:53 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_5/</guid>
-      <description>By the end of this Tutorial you will understand basics of the Networking API within the Eclipse Engine. This tutorial will show you how to Send, Receive and Handle packets with EclipseNetworking.
-(Note: EclipseNetworking has only been verified to work on windows 10 &amp;amp; 11.If your device/os is unsupported please, please submit an issue here.)
-Getting Started Before you can get started using the Networking API. You must properly set the project up to support the Networking API.</description>
-    </item>
-    
-    <item>
-      <title>Eclipse Engine - Graphics</title>
-      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_4/</link>
-      <pubDate>Tue, 14 Jun 2022 17:58:52 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_4/</guid>
-      <description>By the end of this Tutorial you will understand basics of the Graphics API within the Eclipse Engine. This tutorial will show you how to load custom models and shaders. Custom Texture loading is very limited at the moment.
-Getting Started Before you can get started using the Graphics API. You must properly set the project up to support the Graphics API. The first thing you will need to do is link the project to the correct libraries.</description>
-    </item>
-    
-    <item>
-      <title>Eclipse Engine - Creating A Project</title>
-      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_2/</link>
-      <pubDate>Tue, 14 Jun 2022 17:58:51 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_2/</guid>
-      <description>Creating a project in the Eclipse Engine is unfortunately a bit of an involved process, however stay with me on this because by the end of this tutorial you will fully understand how to create and compile an Eclipse Project!.
-Some useful information to know before getting started with Eclipse Projects is Lua as this is the language that premake5 bases their generation scrips off.
-First we will look at creating a project the easy way&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Eclipse Engine - Windowing</title>
-      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_3/</link>
-      <pubDate>Tue, 14 Jun 2022 17:58:51 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_3/</guid>
-      <description>By the end of this tutorial you will know how to create a windowed application in the Eclipse Engine.
-Due to the nature of the Eclipse Engine being modular, applications do not have a window by default and you must add it as an engine module. In this tutorial we will go through on how to do just that and go through how to customize the window to your liking.</description>
-    </item>
-    
-    <item>
-      <title>Eclipse Engine - Welcome</title>
-      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_1/</link>
-      <pubDate>Tue, 14 Jun 2022 17:58:49 +1000</pubDate>
-      
-      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_1/</guid>
-      <description>The Eclipse Engine has been designed to be as modular as possible, due to this design decision there is quite a bit of setup, but don&amp;rsquo;t worry. I promise its simple!.
-The first thing you want to do is actually acquire the engine and compile it for your development platform (windows &amp;amp; linux) the Eclipse Engine uses GitHub to house all its source code (as it follows the open source standard).</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>jamesgreensill.com/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>jamesgreensill.com/about/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>jamesgreensill.com/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>jamesgreensill.com/contact/</guid>
-      <description></description>
     </item>
     
     <item>
