@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="James Greensill ">
+<meta name="description" content="By the end of this Tutorial you will understand basics of the Graphics API within the Eclipse Engine. This tutorial will show you how to load custom models and shaders. Custom Texture loading is very limited at the moment.
+Getting Started Before you can get started using the Graphics API. You must properly set the project up to support the Graphics API. The first thing you will need to do is link the project to the correct libraries." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_4/" />
+
+
+    <title>
+        
+            Eclipse Engine - Graphics :: James Greensill 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../../main.d3af0b7470e90cacef5bec8575bd52b432c1ad159dab36d94f3e80b2738d96ac.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Eclipse Engine - Graphics">
+<meta itemprop="description" content="By the end of this Tutorial you will understand basics of the Graphics API within the Eclipse Engine. This tutorial will show you how to load custom models and shaders. Custom Texture loading is very limited at the moment.
+Getting Started Before you can get started using the Graphics API. You must properly set the project up to support the Graphics API. The first thing you will need to do is link the project to the correct libraries."><meta itemprop="datePublished" content="2022-06-14T17:58:52+10:00" />
+<meta itemprop="dateModified" content="2022-06-14T17:58:52+10:00" />
+<meta itemprop="wordCount" content="1397">
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Eclipse Engine - Graphics"/>
+<meta name="twitter:description" content="By the end of this Tutorial you will understand basics of the Graphics API within the Eclipse Engine. This tutorial will show you how to load custom models and shaders. Custom Texture loading is very limited at the moment.
+Getting Started Before you can get started using the Graphics API. You must properly set the project up to support the Graphics API. The first thing you will need to do is link the project to the correct libraries."/>
+
+
+
+    <meta property="og:title" content="Eclipse Engine - Graphics" />
+<meta property="og:description" content="By the end of this Tutorial you will understand basics of the Graphics API within the Eclipse Engine. This tutorial will show you how to load custom models and shaders. Custom Texture loading is very limited at the moment.
+Getting Started Before you can get started using the Graphics API. You must properly set the project up to support the Graphics API. The first thing you will need to do is link the project to the correct libraries." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_4/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-06-14T17:58:52+10:00" />
+<meta property="article:modified_time" content="2022-06-14T17:58:52+10:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-06-14 17:58:52 &#43;1000 AEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../../" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /dev/jamesgreensill</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#FF9300;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="../../../projects/">My Work</a></li><li><a href="../../../blog/">Blog</a></li><li><a href="../../../about/">About</a></li><li><a href="../../../contact/">Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+            <div class="content">
+                
+    <main class="post">
+        <div class="post-info">
+            
+            </p>
+        </div>
+        <article>
+            <h2 class="post-title"><a href="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_4/">Eclipse Engine - Graphics</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                
+                
+                
+                <p>By the end of this Tutorial you will understand basics of the Graphics API within the Eclipse Engine. This tutorial will show you how to load custom models and shaders. Custom Texture loading is very limited at the moment.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Before you can get started using the Graphics API. You must properly set the project up to support the Graphics API. The first thing you will need to do is link the project to the correct libraries. (refer to tutorial: [[Tutorial_2 - Projects.]] for information on linking).</p>
+<p>The libraires required for this tutorial are the following</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Link Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eclipse Engine</td>
+<td>EclipseEngine</td>
+<td>This is the core engine<!-- raw HTML omitted -->you will need to link to this<!-- raw HTML omitted -->to use any engine features.</td>
+</tr>
+<tr>
+<td>Eclipse Debugging</td>
+<td>EclipseDebugging</td>
+<td>This is optional, but adds fancy<!-- raw HTML omitted -->colors to console</td>
+</tr>
+<tr>
+<td>Eclipse Graphics</td>
+<td>EclipseGraphics</td>
+<td>This is the graphics library for<!-- raw HTML omitted -->the Eclispe Engine</td>
+</tr>
+<tr>
+<td>ASSIMP</td>
+<td>assimp</td>
+<td>ASSIMP handles all the model loading</td>
+</tr>
+<tr>
+<td>GLFW</td>
+<td>glfw</td>
+<td>GLFW handles all the windowing functionality</td>
+</tr>
+<tr>
+<td>GLAD</td>
+<td>glad</td>
+<td>GLAD handles all the communication between the engine &amp; OpenGL</td>
+</tr>
+</tbody>
+</table>
+<p>your <code>premake5.lua</code> file under <code>./Projects/[YOUR_PROJECT_NAME]</code> should look like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>CreateProject(
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Test_Project&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Dependencies</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;EclipseEngine&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;EclipseDebugging&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;EclipseGraphics&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;assimp&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;glfw&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;glad&#34;</span>,
+</span></span><span style="display:flex;"><span>},
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;%{wks.location}../Projects/Test_Project&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Before you can use the Graphics API you must add the GraphicsModule to the Engine.</p>
+<p>Open your <code>ApplicationDriver.cpp</code> and you should see the following code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// Core Engine
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Application.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ApplicationDemo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Create<span style="color:#f92672">&lt;</span>ApplicationDemo<span style="color:#f92672">&gt;</span>({});
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Initialize<span style="color:#f92672">&lt;</span><span style="color:#75715e">/*INSERT MODULES HERE*/</span><span style="color:#f92672">&gt;</span>(Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Instance);
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Run();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Next you want to include the <code>WindowModule.h</code> file under <code>/EclipseEngine/include/WindowModule.h</code>
+and
+<code>GraphicsModule.h</code> file under <code>/EclipseGraphics/include/GraphicsModule.h</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/WindowModule.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseGraphics/include/GraphicsModule.h&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>Finally you want to modify the <code>Initialize&lt;&gt;</code> template arguments to include the window module. This can be done like so.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Initialize<span style="color:#f92672">&lt;</span>Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>WindowModule, Eclipse<span style="color:#f92672">::</span>Graphics<span style="color:#f92672">::</span>GraphicsModule<span style="color:#f92672">&gt;</span>(Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Instance);
+</span></span></code></pre></div><p>Finally your project has been setup for rendering and you can now use the Graphics API.</p>
+<h2 id="rendering-an-object">Rendering An Object.</h2>
+<p>This section will focus on rendering an object using the default resources that the engine supplies.
+due to the limited graphical api that Eclipse - v0.1a has. Loading Models, Shaders and Textures is very limited, and currently only supports a singular texture and shader, whilst theoretically supporting a larger amount.</p>
+<p>The first step to rendering an object is to actually load the object into the engine!. To do this you must use the resource manager. Don&rsquo;t worry, its simple!</p>
+<p>First step is to override the virtual function <code>OnEngineInit()</code> provided by the application class in <code>ApplicationDemo.h</code>.
+This will look something like the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApplicationDemo</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> OnEngineInit() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Once you have overridden <code>OnEngineInit()</code> you will need to load the resources (models, shaders and textures). To do this you will use the <code>ResourceManager.h</code> api. So make sure to include it within the <code>ApplicationDemo.cpp</code> file like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/ResourceManager.h&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>Alright, so we have the resource manager included, but what about the resources? The resources that we will need in this tutorial are <code>Eclipse::Graphics::ShaderProgram</code>, <code>Eclipse::Graphics::Texture</code>, and <code>Eclipse::Graphics::Model</code>. These are all under the EclipseGraphics module, so we will need to include them like so.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseGraphics/include/ShaderProgram.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseGraphics/include/Texture.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseGraphics/include/Model.h&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>Now that we have the resources included we can load them into the engine! In the <code>OnEngineInit()</code> function you will want to use the functions <code>ResourceManager::Load&lt;T&gt;(...)</code> and <code>ResourceManager::SetDefault&lt;T&gt;(...)</code> to load the resources and set the engines default resources.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> Eclipse;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> Engine;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> Graphics;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> ApplicationDemo<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Load and Set default shader.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ResourceManager<span style="color:#f92672">::</span>SetDefault(ResourceManager<span style="color:#f92672">::</span>Load<span style="color:#f92672">&lt;</span>ShaderProgram<span style="color:#f92672">&gt;</span>({ R<span style="color:#e6db74">&#34;(./data/shaders/default.vs)&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, R<span style="color:#e6db74">&#34;(./data/shaders/default.fs)&#34;</span>}));
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Load and Set default texture.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ResourceManager<span style="color:#f92672">::</span>SetDefault(ResourceManager<span style="color:#f92672">::</span>Load<span style="color:#f92672">&lt;</span>Texture<span style="color:#f92672">&gt;</span>({ R<span style="color:#e6db74">&#34;(./data/textures/default.jpg)&#34;</span> }));
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Load an external model.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ResourceKey cat_model_key <span style="color:#f92672">=</span> ResourceManager<span style="color:#f92672">::</span>Load<span style="color:#f92672">&lt;</span>Model<span style="color:#f92672">&gt;</span>({R<span style="color:#e6db74">&#34;(./data/models/cat.fbx)&#34;</span>});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>*Note: You can find the default resources under <code>$(WorkingDir)/data/[type]/[resource]</code> *</p>
+<p>The resource manager uses an array of directories to load specific resources, due to this specific resources require more directories to properly load.</p>
+<p>The most prominant one is the <code>ShaderProgram</code> resource. In this example it uses 3 directories, which correspond to the vertex shader, geometry shader and the fragment shader.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ResourceManaget<span style="color:#f92672">::</span>Load<span style="color:#f92672">&lt;</span>ShaderProgram<span style="color:#f92672">&gt;</span>({<span style="color:#e6db74">&#34;Vertex.vs&#34;</span>, <span style="color:#e6db74">&#34;Geometry.gs&#34;</span>, <span style="color:#e6db74">&#34;Fragment.fs&#34;</span>});
+</span></span></code></pre></div><p>Other resources such as <code>Texture</code> and <code>Model</code> only require one directory to load, and will only use the first directory supplied.</p>
+<p>The <code>SetDefault&lt;T&gt;(ResourceKey)</code> function allows you to set a custom default/fallback resource. It uses type_id&rsquo;s to determine what type it the resource should represent. You can use the <code>GetDefault&lt;T&gt;()</code> to get the default key of <code>typeid(T)</code></p>
+<p>However we are storing the model key as a variable to use later for rendering of the model.</p>
+<p>Now that the resources we will use for this tutorial have been loaded. We can get to actually creating some objects to use these resources. In this part of the tutorial you will need to include the following header files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// Engines object manager
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/SceneManager.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// Engines object class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseEngine/include/Object.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Components
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseGraphics/include/Camera.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseGraphics/include/MeshRenderer.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseGraphics/include/Light.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// Required to use the Object&#39;s Transform.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseEngine/include/Transform.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>Another core part of the engine you will need is <code>SceneManager.h</code> api to load objects into the engine. The scene manager will allow you to load scenes, save scenes, and most importantly add objects to a scene. The scene manager handles all the behaviours and components on objects.</p>
+<p>The core <code>Object</code> class acts as a composite base for all behaviours and components. This allows you to add components, query components, delete a component and use a hierarchy tree to search for components in children/parents.</p>
+<p>The <code>Camera</code> class inherits from <code>Component</code> and as such is a Component which can be composited into an object. Its core functionality acts as a data structure with some helper functionality and other systems such as the renderer take advantage of this data to render the scene using this camera component.</p>
+<p>The <code>MeshRenderer</code> class inherits from <code>Component</code> and as such is a Component which can be composited into an object. Its core functionality as a data structure with some helper functions. It overrides the <code>Draw</code> virtual function and buffers a draw call to the renderer.</p>
+<p>the <code>Light</code> class inherits from <code>Component</code> and as such is a Component which can be composited into an object. Its core functionality acts as a data structure with some helper functionality and other systems such as the renderer take advantage of this data to render objects with lighting calculations.</p>
+<p>The <code>Transform</code> class inherits from <code>Component</code> and as such is a Component which will automatically be composited into an object. Its core functionality is to act as a data structure to act like a data structure to hold translation, rotation and scale.</p>
+<p>Alright, so the first object we are going to create is the camera object. This object will consist of a camera component. Appending from the code above, it should look something like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// create camera object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Eclipse<span style="color:#f92672">::</span>Object<span style="color:#f92672">*</span> camera_object <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Eclipse<span style="color:#f92672">::</span>Object();
+</span></span><span style="display:flex;"><span>camera_object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Eclipse<span style="color:#f92672">::</span>Components<span style="color:#f92672">::</span>Camera<span style="color:#f92672">&gt;</span>();
+</span></span></code></pre></div><p>and then we will create the model object. This will consist of a MeshRenderer component. This time we want to store a reference to the component. Try and do this your self!</p>
+<p>(<em>The code should look like this</em>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Eclipse<span style="color:#f92672">::</span>Object<span style="color:#f92672">*</span> cat_object <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Eclipse<span style="color:#f92672">::</span>Object();
+</span></span><span style="display:flex;"><span>Eclipse<span style="color:#f92672">::</span>Components<span style="color:#f92672">::</span>MeshRenderer<span style="color:#f92672">*</span> cat_mesh_renderer <span style="color:#f92672">=</span> cat_object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Eclipse<span style="color:#f92672">::</span>Components<span style="color:#f92672">::</span>MeshRenderer<span style="color:#f92672">&gt;</span>();
+</span></span></code></pre></div><p>You can also use <code>Object::ComponentContainer::GetComponent&lt;T&gt;()</code> to get a reference to a specific component.</p>
+<p>Next we will set the model of the mesh renderer like so.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>cat_mesh_renderer<span style="color:#f92672">-&gt;</span>SetModel(cat_model_key);
+</span></span></code></pre></div><p>finally due to the scale of the object we need to translate it. This can be done like so.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// This will change the cat&#39;s position in world space.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cat_object<span style="color:#f92672">-&gt;</span>transform<span style="color:#f92672">-&gt;</span>SetTranslation({<span style="color:#ae81ff">0.0f</span>,<span style="color:#ae81ff">0.0f</span>,<span style="color:#ae81ff">1500.0f</span>});
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// This will change the cat&#39;s rotation in world space.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cat_object<span style="color:#f92672">-&gt;</span>transform<span style="color:#f92672">-&gt;</span>SetRotation({<span style="color:#ae81ff">4.71f</span>,<span style="color:#ae81ff">0.35f</span>,<span style="color:#ae81ff">0.0f</span>});
+</span></span></code></pre></div><p>The final object we will create is a light. This object will provide illumination to the scene. Currently Eclipse only support directional lights.
+After this we will modify the values: AmbientColor, SpecularColor, DiffuseColor and SpecularIntensity. These colors folow the RGBA pattern. I want you to try and add and create a new object, add the light component and set these values to make the cat red.</p>
+<p>(<em>The code should look like this.</em>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// create light object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Eclipse<span style="color:#f92672">::</span>Object<span style="color:#f92672">*</span> light_object <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Eclipse<span style="color:#f92672">::</span>Object();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add light component
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Eclipse<span style="color:#f92672">::</span>Components<span style="color:#f92672">::</span>Light<span style="color:#f92672">*</span> light_object_light <span style="color:#f92672">=</span> light_object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Eclipse<span style="color:#f92672">::</span>Components<span style="color:#f92672">::</span>Light<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>light_object_light<span style="color:#f92672">-&gt;</span>SetAmbientColor({ <span style="color:#ae81ff">0.1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0.1</span> });
+</span></span><span style="display:flex;"><span>light_object_light<span style="color:#f92672">-&gt;</span>SetSpecularColor({ <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.1</span> });
+</span></span><span style="display:flex;"><span>light_object_light<span style="color:#f92672">-&gt;</span>SetDiffuseColor({ <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.1</span> });
+</span></span><span style="display:flex;"><span>light_object_light<span style="color:#f92672">-&gt;</span>SetIntensity(<span style="color:#ae81ff">32</span>);
+</span></span></code></pre></div><p>Though we have created objects, they are not in the scene yet. Its quite simple to add the objects you have created into a scene. Firstly you have to get a pointer to the current scene like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>SceneManagement<span style="color:#f92672">::</span>Scene<span style="color:#f92672">*</span> scene <span style="color:#f92672">=</span> Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>SceneManagement<span style="color:#f92672">::</span>SceneManager<span style="color:#f92672">::</span>Instance<span style="color:#f92672">-&gt;</span>GetActiveScene();
+</span></span></code></pre></div><p>due to this being a pointer, you can freely modify this to add new objects like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>scene<span style="color:#f92672">-&gt;</span>AddObject(camera_object);
+</span></span><span style="display:flex;"><span>scene<span style="color:#f92672">-&gt;</span>AddObject(cat_object);
+</span></span><span style="display:flex;"><span>scene<span style="color:#f92672">-&gt;</span>AddObject(light_object);
+</span></span></code></pre></div><p>and that is it! if you hit run, and everything went right. Then you should have a red cat in your scene fiercely looking at you.</p>
+<p><em>Next Tutorial: <a href="../../../blog/eclipse_engine/ee_tutorial_5">Networking</a></em></p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+    <button onclick="history.back()">Back</button>
+
+            </div>
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="jamesgreensill.com">James Greensill</a></span>
+            <span></span>
+            <span><a href="jamesgreensill.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="../../../bundle.min.feebdc8d801e3fb1791305e362b6d11557f029604dd5b3c27e2686bc88787ee90ae1ccf0afe81bd7d959d7617cfe1fc73062aa82b4e1fa830d6941193d2cbddf.js" integrity="sha512-/uvcjYAeP7F5EwXjYrbRFVfwKWBN1bPCfiaGvIh4fukK4czwr&#43;gb19lZ12F8/h/HMGKqgrTh&#43;oMNaUEZPSy93w=="></script>
+
+
+
+    </body>
+</html>

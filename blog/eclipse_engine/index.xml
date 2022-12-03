@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Engine Development on James Greensill</title>
+    <link>jamesgreensill.com/blog/eclipse_engine/</link>
+    <description>Recent content in Engine Development on James Greensill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Jun 2022 17:58:49 +1000</lastBuildDate><atom:link href="jamesgreensill.com/blog/eclipse_engine/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eclipse Engine - Networking</title>
+      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_5/</link>
+      <pubDate>Tue, 14 Jun 2022 17:58:53 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_5/</guid>
+      <description>By the end of this Tutorial you will understand basics of the Networking API within the Eclipse Engine. This tutorial will show you how to Send, Receive and Handle packets with EclipseNetworking.
+(Note: EclipseNetworking has only been verified to work on windows 10 &amp;amp; 11.If your device/os is unsupported please, please submit an issue here.)
+Getting Started Before you can get started using the Networking API. You must properly set the project up to support the Networking API.</description>
+    </item>
+    
+    <item>
+      <title>Eclipse Engine - Graphics</title>
+      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_4/</link>
+      <pubDate>Tue, 14 Jun 2022 17:58:52 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_4/</guid>
+      <description>By the end of this Tutorial you will understand basics of the Graphics API within the Eclipse Engine. This tutorial will show you how to load custom models and shaders. Custom Texture loading is very limited at the moment.
+Getting Started Before you can get started using the Graphics API. You must properly set the project up to support the Graphics API. The first thing you will need to do is link the project to the correct libraries.</description>
+    </item>
+    
+    <item>
+      <title>Eclipse Engine - Creating A Project</title>
+      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_2/</link>
+      <pubDate>Tue, 14 Jun 2022 17:58:51 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_2/</guid>
+      <description>Creating a project in the Eclipse Engine is unfortunately a bit of an involved process, however stay with me on this because by the end of this tutorial you will fully understand how to create and compile an Eclipse Project!.
+Some useful information to know before getting started with Eclipse Projects is Lua as this is the language that premake5 bases their generation scrips off.
+First we will look at creating a project the easy way&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Eclipse Engine - Windowing</title>
+      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_3/</link>
+      <pubDate>Tue, 14 Jun 2022 17:58:51 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_3/</guid>
+      <description>By the end of this tutorial you will know how to create a windowed application in the Eclipse Engine.
+Due to the nature of the Eclipse Engine being modular, applications do not have a window by default and you must add it as an engine module. In this tutorial we will go through on how to do just that and go through how to customize the window to your liking.</description>
+    </item>
+    
+    <item>
+      <title>Eclipse Engine - Welcome</title>
+      <link>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_1/</link>
+      <pubDate>Tue, 14 Jun 2022 17:58:49 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/blog/eclipse_engine/ee_tutorial_1/</guid>
+      <description>The Eclipse Engine has been designed to be as modular as possible, due to this design decision there is quite a bit of setup, but don&amp;rsquo;t worry. I promise its simple!.
+The first thing you want to do is actually acquire the engine and compile it for your development platform (windows &amp;amp; linux) the Eclipse Engine uses GitHub to house all its source code (as it follows the open source standard).</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="James Greensill ">
+<meta name="description" content="By the end of this Tutorial you will understand basics of the Networking API within the Eclipse Engine. This tutorial will show you how to Send, Receive and Handle packets with EclipseNetworking.
+(Note: EclipseNetworking has only been verified to work on windows 10 &amp;amp; 11.If your device/os is unsupported please, please submit an issue here.)
+Getting Started Before you can get started using the Networking API. You must properly set the project up to support the Networking API." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_5/" />
+
+
+    <title>
+        
+            Eclipse Engine - Networking :: James Greensill 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../../main.d3af0b7470e90cacef5bec8575bd52b432c1ad159dab36d94f3e80b2738d96ac.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Eclipse Engine - Networking">
+<meta itemprop="description" content="By the end of this Tutorial you will understand basics of the Networking API within the Eclipse Engine. This tutorial will show you how to Send, Receive and Handle packets with EclipseNetworking.
+(Note: EclipseNetworking has only been verified to work on windows 10 &amp; 11.If your device/os is unsupported please, please submit an issue here.)
+Getting Started Before you can get started using the Networking API. You must properly set the project up to support the Networking API."><meta itemprop="datePublished" content="2022-06-14T17:58:53+10:00" />
+<meta itemprop="dateModified" content="2022-06-14T17:58:53+10:00" />
+<meta itemprop="wordCount" content="2312">
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Eclipse Engine - Networking"/>
+<meta name="twitter:description" content="By the end of this Tutorial you will understand basics of the Networking API within the Eclipse Engine. This tutorial will show you how to Send, Receive and Handle packets with EclipseNetworking.
+(Note: EclipseNetworking has only been verified to work on windows 10 &amp; 11.If your device/os is unsupported please, please submit an issue here.)
+Getting Started Before you can get started using the Networking API. You must properly set the project up to support the Networking API."/>
+
+
+
+    <meta property="og:title" content="Eclipse Engine - Networking" />
+<meta property="og:description" content="By the end of this Tutorial you will understand basics of the Networking API within the Eclipse Engine. This tutorial will show you how to Send, Receive and Handle packets with EclipseNetworking.
+(Note: EclipseNetworking has only been verified to work on windows 10 &amp; 11.If your device/os is unsupported please, please submit an issue here.)
+Getting Started Before you can get started using the Networking API. You must properly set the project up to support the Networking API." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_5/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-06-14T17:58:53+10:00" />
+<meta property="article:modified_time" content="2022-06-14T17:58:53+10:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-06-14 17:58:53 &#43;1000 AEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../../" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /dev/jamesgreensill</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#FF9300;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="../../../projects/">My Work</a></li><li><a href="../../../blog/">Blog</a></li><li><a href="../../../about/">About</a></li><li><a href="../../../contact/">Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+            <div class="content">
+                
+    <main class="post">
+        <div class="post-info">
+            
+            </p>
+        </div>
+        <article>
+            <h2 class="post-title"><a href="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_5/">Eclipse Engine - Networking</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                
+                
+                
+                <p>By the end of this Tutorial you will understand basics of the Networking API within the Eclipse Engine. This tutorial will show you how to Send, Receive and Handle packets with <code>EclipseNetworking</code>.</p>
+<p>(<em>Note: EclipseNetworking has only been verified to work on windows 10 &amp; 11.<!-- raw HTML omitted -->If your device/os is unsupported please, please submit an issue <a href="https://www.github.com/jwrmg/Eclipse/issues">here</a>.</em>)</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Before you can get started using the Networking API. You must properly set the project up to support the Networking API. The first thing you will need to do is link the project to the correct libraries. (refer to tutorial: [[Tutorial_2 - Projects.]] for information on linking). This tutorial will be using the pre-provided <code>EclipseChat</code> API to create a small interface to send messages back and fourth through the console.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Link Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eclipse Engine</td>
+<td>EclipseEngine</td>
+<td>This is the core engine<!-- raw HTML omitted -->you will need to link to this to use any engine features.</td>
+</tr>
+<tr>
+<td>Eclipse Debugging</td>
+<td>EclipseDebugging</td>
+<td>This is optional, but adds fancy colors to console</td>
+</tr>
+<tr>
+<td>Eclipse Networking</td>
+<td>EclispeNetworking</td>
+<td>This is the core Networking API.</td>
+</tr>
+<tr>
+<td>Eclipse Chat</td>
+<td>EclipseChat</td>
+<td>Native chat API integrated with the Networking API.</td>
+</tr>
+<tr>
+<td>GLFW</td>
+<td>glfw</td>
+<td>GLFW handles all the windowing functionality</td>
+</tr>
+<tr>
+<td>GLAD</td>
+<td>glad</td>
+<td>GLAD handles all the communication between the engine &amp; OpenGL</td>
+</tr>
+<tr>
+<td>RakNet</td>
+<td>raknet</td>
+<td>RakNet handles all the low-level networking functionality</td>
+</tr>
+<tr>
+<td>Winsock</td>
+<td>Ws2_32.lib</td>
+<td>Used by RakNet for low-level networking functionality</td>
+</tr>
+<tr>
+<td>WinLDAP</td>
+<td>Wldap32.lib</td>
+<td>Used by Winsock for low-level networking functionality</td>
+</tr>
+<tr>
+<td>Crypt32.lib</td>
+<td>Crypt32.lib</td>
+<td>Used by RakNet for packet encryption.</td>
+</tr>
+</tbody>
+</table>
+<p>Your <code>premake5.lua</code> file under <code>./Projects/[YOUR_PROJECT_NAME]</code> should look like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>CreateProject(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Network Server&#34;</span>,
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- Engine Modules</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseEngine&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseDebugging&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseNetworking&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseChat&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- Module Dependencies.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glad&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glfw&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;raknet&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- Windows Dependencies.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Ws2_32.lib&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Wldap32.lib&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Crypt32.lib&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;%{wks.location}../Projects/NetworkServer&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Due to the nature of Networking. You require 2 projects. One for the Server and one for the Client.
+(<em>Note: Unless told. Perform the tutorial on both projects.</em>)</p>
+<p>Before you can use the Networking API you must add the NetworkingModule to the Engine.</p>
+<p>Open your <code>ApplicationDriver.cpp</code> and you should see the following code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// Core Engine
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Application.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ApplicationDemo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Create<span style="color:#f92672">&lt;</span>ApplicationDemo<span style="color:#f92672">&gt;</span>({});
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Initialize<span style="color:#f92672">&lt;</span><span style="color:#75715e">/*INSERT MODULES HERE*/</span><span style="color:#f92672">&gt;</span>(Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Instance);
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Run();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Next you want to include the <code>DebugModule.h</code> file under <code>/EclipseDebugging/include/DebugModule.h</code>
+and
+<code>NetworkingModule.h</code> file under <code>/EclipseNetworking/include/NetworkingModule.h</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseDebugging/include/DebugModule.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseNetworking/include/NetworkingModule.h&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>Finally you want to modify the <code>Initialize&lt;&gt;</code> template arguments to include the window module. This can be done like so.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Initialize<span style="color:#f92672">&lt;</span>Eclipse<span style="color:#f92672">::</span>Debug<span style="color:#f92672">::</span>DebugModule, Eclipse<span style="color:#f92672">::</span>Networking<span style="color:#f92672">::</span>NetworkingModule<span style="color:#f92672">&gt;</span>(Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Instance);
+</span></span></code></pre></div><p>Finally your project has been setup for networking using the Networking API.</p>
+<h2 id="chatsender">ChatSender</h2>
+<p><strong>THIS IS TO BE DONE ON THE CLIENT PROJECT</strong></p>
+<p>Before you can begin work on the client you will need to setup a way to have IO asynchronously through the console. As this is not vital to the ChatAPI it is not required. However for this tutorial it is.</p>
+<p>Create 2 new files: <code>ChatSender.h</code> and <code>ChatSender.cpp</code>. And put them in the <code>[Project]\include</code> &amp; <code>[Project]\src</code> respectively and regenerate the project. Just copy and paste the following into your files respectively.</p>
+<p><code>ChatSender.h</code> contents:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Component.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseChat/include/NetworkChatInterface.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Eclipse
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">namespace</span> Application
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChatSender</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Components<span style="color:#f92672">::</span>Component
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>			Chat<span style="color:#f92672">::</span>NetworkChatInterface<span style="color:#f92672">*</span> netInterface <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">_fetchCaches</span>();
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ThreadedCin</span>();
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> inputThread;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">void</span> Awake() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Update</span>() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Reset</span>() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Start</span>() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Dispose</span>() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>		};
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>ChatSender.cpp</code> contents:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ChatSender.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Object.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Console.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Eclipse
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">namespace</span> Application
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ChatSender<span style="color:#f92672">::</span>_fetchCaches()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            netInterface <span style="color:#f92672">=</span> object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.GetComponent<span style="color:#f92672">&lt;</span>Chat<span style="color:#f92672">::</span>NetworkChatInterface<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ChatSender<span style="color:#f92672">::</span>ThreadedCin()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (true)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                netInterface<span style="color:#f92672">-&gt;</span>Send(Engine<span style="color:#f92672">::</span>Console<span style="color:#f92672">::</span>ReadLine());
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ChatSender<span style="color:#f92672">::</span>Awake()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _fetchCaches();
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Create a new thread.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            inputThread <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span>([<span style="color:#66d9ef">this</span>] {<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>ThreadedCin(); });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ChatSender<span style="color:#f92672">::</span>Update() {<span style="color:#75715e">/*void*/</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ChatSender<span style="color:#f92672">::</span>Reset() {<span style="color:#75715e">/*void*/</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ChatSender<span style="color:#f92672">::</span>Start() {<span style="color:#75715e">/*void*/</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ChatSender<span style="color:#f92672">::</span>Dispose()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            inputThread.join();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Alright now that you have regenerated the project and have the Component <code>ChatSender</code> to use. Its time to setup the client.</p>
+<h2 id="setting-up-the-client-project">Setting up the Client Project.</h2>
+<p><strong>NOTE: EVERYTHING UNDER THIS SECTION APPLIES TO THE CLIENT PROJECT.</strong></p>
+<p>So, what should our Client Application do? Well because it will allow the user to communicate to everyone on the server. To do this we will need a way to connect to any server with any port. So we will allow for the user to type an ip-address and port.</p>
+<p>To do this we will use the <code>Console::ReadLine() -&gt; std::string</code> function to prompt an input and return it as a string. In the <code>ApplicationDemo</code> class override the <code>OnEngineInit() -&gt; void</code>. Within the <code>ApplicationDemo.cpp</code> we will want to include the following header files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// Used to create an object in the scene.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Object.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// Used to composite
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseNetworking/include/NetworkClient.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseChat/include/ConsoleChatWriter.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseChat/include/NetworkChatInterface.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ChatSender.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseEngine/include/Console.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseNetworking/include/NetworkIdentifiers.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>We already know the <code>Object.h</code> header file. So it wont be explained.
+The <code>NetworkClient.h</code> is a component used to declare this application as a client.
+The <code>ConsoleChatWriter.h</code> is a component used by the <code>ChatManager</code> component as a message output. Because the <code>ChatManager</code> is a modular system that uses 2 components to fully function. It Requires an <code>Input</code> component that is derived from <code>ChatInterface.h</code> and it has an optional <code>Output</code> component that is derived <code>ChatWriter.h</code>. This chat writer is optional, if it does not exist the chat manager will simply not output any messages, however it will still function. The <code>Input</code> and <code>Output</code> components being used for this tutorial are the <code>NetworkChatInterface.h</code> and the <code>ConsoleChatWriter.h</code> respectively. Due to this functionality it allows for the user to create custom input and output components and well as mix &amp; match components. This allows for diverse customizability, and follows the <code>Open Closed Principle</code> as it is open for extension but closed for modification.</p>
+<p>The <code>Console.h</code> is an Eclispe Wrapper around the Windows console.
+The <code>NetworkIdentifers.h</code> is what we will be used to identify that our packet is a chat message.</p>
+<p>Alright, so lets get coding!.</p>
+<p>The first thing we want to do is get the ip-address and port of the server the user will connect to, there are plenty of ways to do this, but for our tutorial we will simply poll the user to enter the ip-address &amp; port as mentioned above. This can be done by using the <code>Console.h</code> class.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> NetworkClientApplication<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Console<span style="color:#f92672">::</span>WriteLine(<span style="color:#e6db74">&#34;Enter the server IP.&#34;</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string ipString <span style="color:#f92672">=</span> Console<span style="color:#f92672">::</span>ReadLine();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Console<span style="color:#f92672">::</span>WriteLine(<span style="color:#e6db74">&#34;Enter port to start server.&#34;</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string portString <span style="color:#f92672">=</span> Console<span style="color:#f92672">::</span>ReadLine();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... more code below
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Once we have obtained the users input we will need to parse the data into their appropriate types. Luckily we only need to parse the port as <code>EclispeNetworking</code> uses <code>std::string</code> as the input for an ip-address. To do this we can use the function <code>std::stoi</code> within a <code>try..catch</code> statement. This will ensure that we can handle the exception instead of the application immediately crashing, as <code>std::stoi</code> does not give errors nicely.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> NetworkClientApplication<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... more code above
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// create an empty short container for the port.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">short</span> port;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>	    <span style="color:#75715e">// attempt to parse the string to an integer and cast it to a short.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        port <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">short</span><span style="color:#f92672">&gt;</span>(std<span style="color:#f92672">::</span>stoi(portString));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">catch</span> (...)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>	    <span style="color:#75715e">// safely handle the exception. In this case we want the application to stop.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        External<span style="color:#f92672">::</span>Debug<span style="color:#f92672">::</span>DebugAPI<span style="color:#f92672">::</span>Error(<span style="color:#e6db74">&#34;Port input was invalid.&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// query the engine to stop.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Application<span style="color:#f92672">::</span>Stop();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>... more code below
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Another way to handle the exception is to ask the user to re-enter a new port. However for this tutorial this functionality will be enough. Once we have the port in a <code>short</code> data type. We can now begin to add the components to build the Networking Client.</p>
+<p>The first thing we want to do is create an <code>Eclipse::Object()</code> and add the following components: <code>ChatSender.h</code>, <code>NetworkClient.h</code>, <code>NetworkChatInterface.h</code>, <code>ConsoleChatWriter.h</code>, <code>ChatManager.h</code>, and add the object to the scene.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> NetworkClientApplication<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... more code above
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// create object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> client_object <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Add the `ChatSender` component.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    client_object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Eclipse<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>ChatSender<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Add the `NetworkClient` component and store it in a variable as it will be used later.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> client <span style="color:#f92672">=</span> client_object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>NetworkClient<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Add the `NetworkChatInterface` component and store it in a variable as it will be used later.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> chatInterface <span style="color:#f92672">=</span> client_object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Chat<span style="color:#f92672">::</span>NetworkChatInterface<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Add the `ChatManager` component.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    client_object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Chat<span style="color:#f92672">::</span>ChatManager<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Add the `ConsoleChatWriter` component.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    client_object<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Chat<span style="color:#f92672">::</span>ConsoleChatWriter<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Finally add the object to the active scene.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    SceneManagement<span style="color:#f92672">::</span>SceneManager<span style="color:#f92672">::</span>Instance<span style="color:#f92672">-&gt;</span>GetActiveScene()<span style="color:#f92672">-&gt;</span>AddObject(client_object);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>... more code below
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Once this <code>Networking Client</code> object has been created &amp; composited we can now prepare the client&rsquo;s handler and begin the interface.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> NetworkClientApplication<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Prepare the Handler to accept packets with the `EID_MESSAGE` Identifier.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	client<span style="color:#f92672">-&gt;</span>handler.OnPacketReceived.AddEvent((<span style="color:#66d9ef">unsigned</span>)EID_MESSAGE, <span style="color:#66d9ef">new</span> EclipseEvent<span style="color:#f92672">&lt;</span>NetworkPacket<span style="color:#f92672">&amp;&gt;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Start the chat interface.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (chatInterface)
+</span></span><span style="display:flex;"><span>        chatInterface<span style="color:#f92672">-&gt;</span>StartInterface();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Start the client process.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (client)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        client<span style="color:#f92672">-&gt;</span>networkPort <span style="color:#f92672">=</span> port;
+</span></span><span style="display:flex;"><span>        client<span style="color:#f92672">-&gt;</span>networkAddress <span style="color:#f92672">=</span> ipString;
+</span></span><span style="display:flex;"><span>        client<span style="color:#f92672">-&gt;</span>StartProcess();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And that&rsquo;s it, pretty simple right? Now all that is left to do is set up the server project.</p>
+<h2 id="setting-up-the-server-project">Setting up the Server Project.</h2>
+<p><strong>NOTE: EVERYTHING UNDER THIS SECTION APPLIES TO THE SERVER PROJECT.</strong></p>
+<p>So, what should our Server Application do? Well because our clients are connected to our server, we need to be notified when a Client sends a message to the server. And we need the server to relay our message to all connected clients. (luckily all of this is taken care of us by the integrated chat api.), however we will need to set the server up and get the user&rsquo;s input on which port they&rsquo;d like to start the server on.</p>
+<p>To do this we will use the <code>Console::ReadLine() -&gt; std::string</code> function to prompt an input and return it as a string. In the <code>ApplicationDemo</code> class override the <code>OnEngineInit() -&gt; void</code>. Within the <code>ApplicationDemo.cpp</code> we will want to include the following header files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// Used to create an object in the scene.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Object.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// Used to composite
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseNetworking/include/NetworkServer.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseChat/include/ConsoleChatWriter.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseChat/include/NetworkChatInterface.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseEngine/include/SceneManager.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseEngine/include/Console.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;EclipseNetworking/include/NetworkIdentifiers.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>We already know the <code>Object.h</code> header file. So it wont be explained.
+The <code>NetworkClient.h</code> is a component used to declare this application as a client.
+The <code>ConsoleChatWriter.h</code> is a component used by the <code>ChatManager</code> component as a message output. Because the <code>ChatManager</code> is a modular system that uses 2 components to fully function. It Requires an <code>Input</code> component that is derived from <code>ChatInterface.h</code> and it has an optional <code>Output</code> component that is derived <code>ChatWriter.h</code>. This chat writer is optional, if it does not exist the chat manager will simply not output any messages, however it will still function. The <code>Input</code> and <code>Output</code> components being used for this tutorial are the <code>NetworkChatInterface.h</code> and the <code>ConsoleChatWriter.h</code> respectively. Due to this functionality it allows for the user to create custom input and output components and well as mix &amp; match components. This allows for diverse customizability, and follows the <code>Open Closed Principle</code> as it is open for extension but closed for modification.</p>
+<p>The <code>Console.h</code> is an Eclispe Wrapper around the Windows console.
+The <code>NetworkIdentifers.h</code> is what we will be used to identify that our packet is a chat message.</p>
+<p>Alright, so lets get coding!.</p>
+<p>The first thing we want to do is get the ip-address and port of the server the user will connect to, there are plenty of ways to do this, but for our tutorial we will simply poll the user to enter the ip-address &amp; port as mentioned above. This can be done by using the <code>Console.h</code> class.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> NetworkClientApplication<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Console<span style="color:#f92672">::</span>WriteLine(<span style="color:#e6db74">&#34;Enter port to start server.&#34;</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string portString <span style="color:#f92672">=</span> Console<span style="color:#f92672">::</span>ReadLine();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... more code below
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Once we have obtained the users input we will need to parse the data into their appropriate types. Luckily we only need to parse the port as <code>EclispeNetworking</code> uses <code>std::string</code> as the input for an ip-address. To do this we can use the function <code>std::stoi</code> within a <code>try..catch</code> statement. This will ensure that we can handle the exception instead of the application immediately crashing, as <code>std::stoi</code> does not give errors nicely.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> NetworkClientApplication<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... more code above
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// create an empty short container for the port.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">short</span> port;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>	    <span style="color:#75715e">// attempt to parse the string to an integer and cast it to a short.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        port <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">short</span><span style="color:#f92672">&gt;</span>(std<span style="color:#f92672">::</span>stoi(portString));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">catch</span> (...)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>	    <span style="color:#75715e">// safely handle the exception. In this case we want the application to stop.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        External<span style="color:#f92672">::</span>Debug<span style="color:#f92672">::</span>DebugAPI<span style="color:#f92672">::</span>Error(<span style="color:#e6db74">&#34;Port input was invalid.&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// query the engine to stop.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Application<span style="color:#f92672">::</span>Stop();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>... more code below
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Another way to handle the exception is to ask the user to re-enter a new port. However for this tutorial this functionality will be enough. Once we have the port in a <code>short</code> data type. We can now begin to add the components to build the Networking Client.</p>
+<p>The first thing we want to do is create an <code>Eclipse::Object()</code> and add the following components: <code>ChatSender.h</code>, <code>NetworkClient.h</code>, <code>NetworkChatInterface.h</code>, <code>ConsoleChatWriter.h</code>, <code>ChatManager.h</code>, and add the object to the scene.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> NetworkClientApplication<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... more code above
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// create server object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> serverObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Add the `NetworkServer` component and store it in a variable as it will be used later.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> server <span style="color:#f92672">=</span> serverObject<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>NetworkServer<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Add the `NetworkChatInterface` component and store it in a variable as it will be used later.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> chatInterface <span style="color:#f92672">=</span> serverObject<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Chat<span style="color:#f92672">::</span>NetworkChatInterface<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Add the `ChatManager` component.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    serverObject<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Chat<span style="color:#f92672">::</span>ChatManager<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Add the `ConsoleChatWriter` component.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    serverObject<span style="color:#f92672">-&gt;</span>m_ComponentContainer.AddComponent<span style="color:#f92672">&lt;</span>Chat<span style="color:#f92672">::</span>ConsoleChatWriter<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Add the server object to the scene.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    SceneManagement<span style="color:#f92672">::</span>SceneManager<span style="color:#f92672">::</span>Instance<span style="color:#f92672">-&gt;</span>GetActiveScene()<span style="color:#f92672">-&gt;</span>AddObject(serverObject);;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>... more code below
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Once this <code>Networking Client</code> object has been created &amp; composited we can now prepare the client&rsquo;s handler and begin the interface.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> NetworkClientApplication<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... more code above
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Prepare the Handler to accept packets with the `EID_MESSAGE` Identifier.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	server<span style="color:#f92672">-&gt;</span>handler.OnPacketReceived.AddEvent((<span style="color:#66d9ef">unsigned</span>)EID_MESSAGE, <span style="color:#66d9ef">new</span> EclipseEvent<span style="color:#f92672">&lt;</span>NetworkPacket<span style="color:#f92672">&amp;&gt;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Start the chat interface.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (chatInterface)
+</span></span><span style="display:flex;"><span>        chatInterface<span style="color:#f92672">-&gt;</span>StartInterface();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Start the client process.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (server)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        server<span style="color:#f92672">-&gt;</span>networkPort <span style="color:#f92672">=</span> port;
+</span></span><span style="display:flex;"><span>        server<span style="color:#f92672">-&gt;</span>StartProcess();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And that is it. You can compile both projects. You will want to start the server first and type in any port in between 0-65535. You will then want to start the client and type <code>localhost</code> as the ip-address and the port you chose for the server and you should be connected to the server. To allow outside connected to connect to your server you will need to port-forward your network on the port you chose, however that is beyond the scope of this tutorial.</p>
+<p>And this is the final tutorial (as of 06/09/2022). Happy coding!.</p>
+<ul>
+<li>The Eclispe Team.</li>
+</ul>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+    <button onclick="history.back()">Back</button>
+
+            </div>
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="jamesgreensill.com">James Greensill</a></span>
+            <span></span>
+            <span><a href="jamesgreensill.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="../../../bundle.min.feebdc8d801e3fb1791305e362b6d11557f029604dd5b3c27e2686bc88787ee90ae1ccf0afe81bd7d959d7617cfe1fc73062aa82b4e1fa830d6941193d2cbddf.js" integrity="sha512-/uvcjYAeP7F5EwXjYrbRFVfwKWBN1bPCfiaGvIh4fukK4czwr&#43;gb19lZ12F8/h/HMGKqgrTh&#43;oMNaUEZPSy93w=="></script>
+
+
+
+    </body>
+</html>

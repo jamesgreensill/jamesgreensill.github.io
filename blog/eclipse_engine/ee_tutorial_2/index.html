@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="James Greensill ">
+<meta name="description" content="Creating a project in the Eclipse Engine is unfortunately a bit of an involved process, however stay with me on this because by the end of this tutorial you will fully understand how to create and compile an Eclipse Project!.
+Some useful information to know before getting started with Eclipse Projects is Lua as this is the language that premake5 bases their generation scrips off.
+First we will look at creating a project the easy way&amp;hellip;" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_2/" />
+
+
+    <title>
+        
+            Eclipse Engine - Creating A Project :: James Greensill 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="../../../main.d3af0b7470e90cacef5bec8575bd52b432c1ad159dab36d94f3e80b2738d96ac.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Eclipse Engine - Creating A Project">
+<meta itemprop="description" content="Creating a project in the Eclipse Engine is unfortunately a bit of an involved process, however stay with me on this because by the end of this tutorial you will fully understand how to create and compile an Eclipse Project!.
+Some useful information to know before getting started with Eclipse Projects is Lua as this is the language that premake5 bases their generation scrips off.
+First we will look at creating a project the easy way&hellip;"><meta itemprop="datePublished" content="2022-06-14T17:58:51+10:00" />
+<meta itemprop="dateModified" content="2022-06-14T17:58:51+10:00" />
+<meta itemprop="wordCount" content="1169">
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Eclipse Engine - Creating A Project"/>
+<meta name="twitter:description" content="Creating a project in the Eclipse Engine is unfortunately a bit of an involved process, however stay with me on this because by the end of this tutorial you will fully understand how to create and compile an Eclipse Project!.
+Some useful information to know before getting started with Eclipse Projects is Lua as this is the language that premake5 bases their generation scrips off.
+First we will look at creating a project the easy way&hellip;"/>
+
+
+
+    <meta property="og:title" content="Eclipse Engine - Creating A Project" />
+<meta property="og:description" content="Creating a project in the Eclipse Engine is unfortunately a bit of an involved process, however stay with me on this because by the end of this tutorial you will fully understand how to create and compile an Eclipse Project!.
+Some useful information to know before getting started with Eclipse Projects is Lua as this is the language that premake5 bases their generation scrips off.
+First we will look at creating a project the easy way&hellip;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_2/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-06-14T17:58:51+10:00" />
+<meta property="article:modified_time" content="2022-06-14T17:58:51+10:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-06-14 17:58:51 &#43;1000 AEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="../../../" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /dev/jamesgreensill</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#FF9300;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="../../../projects/">My Work</a></li><li><a href="../../../blog/">Blog</a></li><li><a href="../../../about/">About</a></li><li><a href="../../../contact/">Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+            <div class="content">
+                
+    <main class="post">
+        <div class="post-info">
+            
+            </p>
+        </div>
+        <article>
+            <h2 class="post-title"><a href="jamesgreensill.com/blog/eclipse_engine/ee_tutorial_2/">Eclipse Engine - Creating A Project</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                
+                
+                
+                <p>Creating a project in the Eclipse Engine is unfortunately a bit of an involved process, however stay with me on this because by the end of this tutorial you will fully understand how to create and compile an Eclipse Project!.</p>
+<p>Some useful information to know before getting started with Eclipse Projects is Lua as this is the language that premake5 bases their generation scrips off.</p>
+<p>First we will look at creating a project the <em><strong>easy</strong></em> way&hellip;</p>
+<h2 id="generating-a-project-the-easy-way">Generating a project (the easy way)!</h2>
+<p>There are prebuilt scripts that will generate a template project that can &amp; will need to be expanded upon.
+To locate these scripts go the the directory <code>./Projects/</code> and there will be a script called <code>project_generator.bat</code> run this script and you will be prompted to enter a project name, for education purposes we will use the name <code>Test_Project</code> as our project name today, however the name can be anything.</p>
+<p>After you have entered your project name, hit enter on your command line interface to submit this into the project generator, and thats it! you should now have a new folder under <code>./Projects/[YOUR_PROJECT_NAME]</code>.</p>
+<p>now move onto linking a project</p>
+<h2 id="creating-a-project-the-more-involved-way">Creating a project (the more involved way)!</h2>
+<p>Due to the nature of premake5 creating projects is relatively simple, however it is an involved process.
+The list of steps are as follows:
+- #1 Creating a directory for your project under <code>./Projects/</code>
+- #2 Creating a <code>premake5.lua</code> file under the <code>./Projects/[YOUR_PROJECT_NAME]/</code> directory
+- #3 Modifying the <code>./Projects/Projects.lua</code> to append a project include.
+- #4 Creating an <code>ApplicationDriver.cpp</code> file and <code>ApplicationDemo.cpp</code> file under <code>./Projects/[YOUR_PROJECT_NAME}/src/</code>
+- #5 Creating an <code>ApplicationDemo.h</code> file under <code>./Projects/[YOUR_PROJECT_NAME]/include/src/</code></p>
+<p>Now that all the steps have been listed we can begin creating our very own Eclispe Project!.</p>
+<h5 id="step-1-creating-a-directory-under-projects-with-the-name-of-your-project">Step 1: Creating a directory under <code>./Projects/</code> with the name of your project.</h5>
+<p>This is as simple as it states, simply create a new folder under the <code>./Projects/</code> directory in the repository with the name of your project.</p>
+<h5 id="step-2-creating-a-premake5lua-at-the-root-of-your-project-directory">Step 2: Creating a <code>premake5.lua</code> at the root of your project directory.</h5>
+<p>This is also a relatively simple step, under the directory <code>./Projects/[YOUR_PROJECT_NAME]/</code> create a new text file with the name of <code>premake5</code> and the extension of <code>.lua</code></p>
+<h5 id="step-3-modify-the-projectsprojectslua-to-include-your-project-in-the-generation-process">Step 3: Modify the <code>./Projects/Projects.lua</code> to include your project in the generation process.</h5>
+<p>All projects that are to be included within the premake5 workspace generation process must be included within the <code>./Projects/Projects.lua</code> file. To do this simply append the following line <code>include &quot;YOUR_PROJECT_NAME&quot;</code> to the end of the file.</p>
+<p><em>Note: If this file doesn&rsquo;t exist, simply create one and put continue as normal.</em></p>
+<p>here is an example</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>include <span style="color:#e6db74">&#34;DemoApplication&#34;</span> <span style="color:#75715e">-- some other project</span>
+</span></span><span style="display:flex;"><span>include <span style="color:#e6db74">&#34;YOUR_PROJECT_NAME&#34;</span> <span style="color:#75715e">-- your project</span>
+</span></span></code></pre></div><h5 id="step-4-creating-the-initial-source-files">Step 4: Creating the initial source files!</h5>
+<p>Create a new directory at the root of your project directory named <code>src</code> (this is important, it must be named <code>src</code>). And create 2 files. One is to be named <code>ApplicationDriver.cpp</code> and the other will be named <code>ApplicationDemo.cpp</code> these will be the entry point for our application in a later tutorial.</p>
+<p>The <code>ApplicationDriver.cpp</code> file should look like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Application.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ApplicationDemo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Create<span style="color:#f92672">&lt;</span>ApplicationDemo<span style="color:#f92672">&gt;</span>({});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Initialize<span style="color:#f92672">&lt;</span><span style="color:#75715e">/*YOUR MODULES HERE*/</span><span style="color:#f92672">&gt;</span>(Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Instance);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application<span style="color:#f92672">::</span>Run();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><em>Note: This code will be explained in a later tutorial, for now just put it in the file as it is required for compilation.</em></p>
+<p>The <code>ApplicationDemo.cpp</code> file should look like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ApplicationDemo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> ApplicationDemo<span style="color:#f92672">::</span>OnCreated()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*void*/</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> ApplicationDemo<span style="color:#f92672">::</span>OnBoot()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*void*/</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> ApplicationDemo<span style="color:#f92672">::</span>OnEngineInit()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*void*/</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><em>Note: This code will be explained in a later tutorial, for now just put it in the file as it is required for compilation.</em></p>
+<h5 id="step-5-the-final-step-creating-the-header-files">Step 5: The final step, creating the header files.</h5>
+<p>Create a new directory at the root of your project directory named <code>include</code> (this is important, it must be named <code>include</code>). And create a file named <code>ApplicationDemo.h</code></p>
+<p>The <code>ApplicationDemo.h</code> file should look like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;EclipseEngine/include/Application.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NetworkClientApplication</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Eclipse<span style="color:#f92672">::</span>Engine<span style="color:#f92672">::</span>Application
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> OnCreated() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnBoot</span>() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnEngineInit</span>() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnAwake</span>() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnDisposed</span>() <span style="color:#66d9ef">override</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><em>Note: This code will be explained in a later tutorial, for now just put it in the file as it is required for compilation.</em></p>
+<p>and thats it! you have successfully created the file structure for your project, now onto linking!</p>
+<h2 id="linking-a-project">Linking a project</h2>
+<p>Once your project has been created you will need enter the dependencies for your project! but what does a dependency mean in the Eclispe Engine? Since the Eclipse Engine was designed from the ground up to be modular every aspect of the engine is seperated into packages known as eclipse modules, by default the core repository will clone all the official modules, (as of <em>31/5/2022</em> there is no way to choose what modules are cloned.) so all you need to do is link your project to the modules that your project requires.</p>
+<p>Here is a list of all official modules for the Eclipse Engine.</p>
+<table>
+<thead>
+<tr>
+<th>Module Link Code</th>
+<th>Description</th>
+<th>Repo</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EclipseEngine</td>
+<td>The core engine functionality</td>
+<td><a href="https://github.com/jwrmg/Eclipse">here</a></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>EclipseDebugging</td>
+<td>Core debugging functionality for the engine</td>
+<td><a href="https://github.com/jwrmg/EclipseDebugging">here</a></td>
+<td>EclipseEngine</td>
+</tr>
+<tr>
+<td>EclipseNetworking</td>
+<td>Core networking functionality for the engine</td>
+<td><a href="https://github.com/jwrmg/EclipseNetworking">here</a></td>
+<td>raknet, Ws2_32.lib, Wldap32.lib, Crypt32.lib</td>
+</tr>
+<tr>
+<td>EclipseGraphics</td>
+<td>Core rendering functionality for the engine</td>
+<td><a href="https://github.com/jwrmg/EclipseGraphics">here</a></td>
+<td>glfw, glad, assimp, EclipseEngine</td>
+</tr>
+<tr>
+<td>EclipseScripting</td>
+<td>Core scripting API for the engine</td>
+<td><a href="https://github.com/jwrmg/EclipseScripting">here</a></td>
+<td>EclipseEngine</td>
+</tr>
+<tr>
+<td>EclipseGui</td>
+<td>Core Graphical UI</td>
+<td><a href="https://github.com/jwrmg/EclipseGui">here</a></td>
+<td>glfw, glad, imgui, EclipseEngine</td>
+</tr>
+<tr>
+<td>EclipseChat</td>
+<td>Chat buffer module for the eclipse engine</td>
+<td><a href="https://github.com/jwrmg/EclipseChat">here</a></td>
+<td>EclipseEngine</td>
+</tr>
+</tbody>
+</table>
+<p>Here are some rules that the Eclipse Engine uses.
+- All external vendors are lowercase.
+- All internal modules follow Pascal Case notation.
+- .lib link files notation cannot be changed and are case sensitive when linking.</p>
+<p>Alright, now we can begin linking out project to the engine! you will want to go into the generated project directory under <code>./Projects/[YOUR_PROJECT_NAME]/</code> and go to and open the <code>./premake5.lua</code> file. Once this has opened in your editor of choice you should see something like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>CreateProject(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;[YOUR_PROJECT_NAME]&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- Dependencies</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;%{wks.location}../Projects/[YOUR_PROJECT_NAME]&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>If you do indeed see something that resembles the above, then congratulations your project successfully generated! If you do not then you can copy and paste the above code into the <code>Projects/[YOUR_PROJECT_NAME]./premake5.lua</code> file.</p>
+<p>So due to the way premake5 links projects we have to use string literals within the curly braces. This can be done as so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>CreateProject(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;[YOUR_PROJECT_NAME]&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- Dependencies</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>	    <span style="color:#75715e">-- modules</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseEngine&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseDebugging&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseGraphics&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseNetworking&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseChat&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseScripting&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;EclipseGui&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">-- vendors</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;assimp&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glfw&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;raknet&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glad&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;imgui&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">-- libraries</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Ws2_32.lib&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Wldap32.lib&#34;</span>,<span style="color:#960050;background-color:#1e0010">``</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Crypt32.lib&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;%{wks.location}../Projects/[YOUR_PROJECT_NAME]&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>You can refer to the <code>Module Link Code</code> tab and the <code>Dependencies</code> tab of the table for the Eclispe linking codes.</p>
+<p>Finally, once you have filled out the required modules and libraries you wish to link your project to, you can re-generate the premake5 workspace.
+You can do this by going to the <code>./.premake5/</code> directory and following the steps provided in the previous tutorial.</p>
+<p>Once the project has been re-generated you can find the workspace files under the  <code>./Build/</code> directory.
+Compiling will be different for every IDE and OS and covering how to compile a project for your specific case is beyond the scope of this tutorial.</p>
+<p>*Next Tutorial: <a href="../../../blog/eclipse_engine/ee_tutorial_3">Windowing</a></p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+    <button onclick="history.back()">Back</button>
+
+            </div>
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            <span><a href="jamesgreensill.com">James Greensill</a></span>
+            <span></span>
+            <span><a href="jamesgreensill.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="../../../bundle.min.feebdc8d801e3fb1791305e362b6d11557f029604dd5b3c27e2686bc88787ee90ae1ccf0afe81bd7d959d7617cfe1fc73062aa82b4e1fa830d6941193d2cbddf.js" integrity="sha512-/uvcjYAeP7F5EwXjYrbRFVfwKWBN1bPCfiaGvIh4fukK4czwr&#43;gb19lZ12F8/h/HMGKqgrTh&#43;oMNaUEZPSy93w=="></script>
+
+
+
+    </body>
+</html>

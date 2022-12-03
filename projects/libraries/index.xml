@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Libraries on James Greensill</title>
+    <link>jamesgreensill.com/projects/libraries/</link>
+    <description>Recent content in Libraries on James Greensill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Jun 2022 17:58:49 +1000</lastBuildDate><atom:link href="jamesgreensill.com/projects/libraries/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>easy_time</title>
+      <link>jamesgreensill.com/projects/libraries/proj_easy_time/</link>
+      <pubDate>Wed, 10 Aug 2022 15:36:31 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/projects/libraries/proj_easy_time/</guid>
+      <description> Authors James Greensill </description>
+    </item>
+    
+    <item>
+      <title>easy_types</title>
+      <link>jamesgreensill.com/projects/libraries/proj_easy_types/</link>
+      <pubDate>Wed, 10 Aug 2022 15:36:31 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/projects/libraries/proj_easy_types/</guid>
+      <description> Authors James Greensill </description>
+    </item>
+    
+  </channel>
+</rss>

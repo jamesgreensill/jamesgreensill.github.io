@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Games on James Greensill</title>
+    <link>jamesgreensill.com/projects/games/</link>
+    <description>Recent content in Games on James Greensill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Jun 2022 17:58:49 +1000</lastBuildDate><atom:link href="jamesgreensill.com/projects/games/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Super Darts</title>
+      <link>jamesgreensill.com/projects/games/proj_super-darts/</link>
+      <pubDate>Wed, 10 Aug 2022 15:36:45 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/projects/games/proj_super-darts/</guid>
+      <description> Programmers James Greensill Lewis Comstive Charlie O&amp;rsquo;Regan Designers Leo Lopez Brodie Maddren Caitlin Johansson Beau Bardwell Paige Dowsett Artists Ethan Kyte Holly Thompson Jesse Lazzaro Lachlan Goolagong Lawson Upton </description>
+    </item>
+    
+    <item>
+      <title>The Devil&#39;s Cookbook</title>
+      <link>jamesgreensill.com/projects/games/proj_the_devils_cookbook/</link>
+      <pubDate>Wed, 10 Aug 2022 15:36:45 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/projects/games/proj_the_devils_cookbook/</guid>
+      <description>Programmers James Greensill - AI &amp;amp; Systems Programmer | Producer. Celeste Soueid - Lead &amp;amp; AI Programmer. Alex Manning - Graphics, Systems &amp;amp; Gameplayer Programmer. Designers Leo Lopez - Game, UX/UI, Level &amp;amp; Mechanics Designer. Beau Bardwell - Game, Systems &amp;amp; Level Designer. Daniel Bobbi - Game &amp;amp; Level Designer. Artists Aislinn (Ayvee) Smith - Lead, UI &amp;amp; Character Artist, Narrative Designer. Ethan Kyte - Environment Artist &amp;amp; Animator. Lara Diego - Concept, Character, Lighting &amp;amp; Environment Artist.</description>
+    </item>
+    
+    <item>
+      <title>Mad Santa</title>
+      <link>jamesgreensill.com/projects/games/proj_mad-santa/</link>
+      <pubDate>Wed, 10 Aug 2022 15:36:38 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/projects/games/proj_mad-santa/</guid>
+      <description>Programming &amp;amp; Art James Greensill Design &amp;amp; Art Traigh Warren Summary Goal: Create an enjoyable arcade game within 2 days.
+Languages Used: C#.
+Engine: Unity 3D.
+Status: Completed.
+Description Mad Santa is a game where you play as an Elf, picking up after the Mad Santa.
+This game was made for a 48 hour Game Jam in collaberation with AIE.
+My Contribution I was the &amp;ldquo;Lead&amp;rdquo;/Only Programmer for Mad Santa, and as such everything you see mechanically was done by myself.</description>
+    </item>
+    
+    <item>
+      <title>Carvroom</title>
+      <link>jamesgreensill.com/projects/games/proj_carvroom/</link>
+      <pubDate>Wed, 10 Aug 2022 15:36:31 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/projects/games/proj_carvroom/</guid>
+      <description> Programmers James Greensill Lewis Comstive </description>
+    </item>
+    
+    <item>
+      <title>How&#39;s It Growing</title>
+      <link>jamesgreensill.com/projects/games/proj_hows-it-growing/</link>
+      <pubDate>Wed, 10 Aug 2022 15:36:23 +1000</pubDate>
+      
+      <guid>jamesgreensill.com/projects/games/proj_hows-it-growing/</guid>
+      <description> Programmers James Greensill Calvin Soueid Ronan Richardson Alex Manning Designers Victoria Richardson Caitlin Johansson Charlie Brazil Artists Aislinn (Ayvee) Smith Ethan Kyte Lara Diego Petra Crispin </description>
+    </item>
+    
+  </channel>
+</rss>
